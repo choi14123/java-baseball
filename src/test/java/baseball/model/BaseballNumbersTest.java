@@ -12,20 +12,19 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class BaseballNumbersTest {
-    // TODO: 12/19/23
-    // 1. validateSize (O)
-    // 2. validateDuplication (O)
-    // 3. (1), (2) 파라미터라이즈 테스트 (O)
-
     @ParameterizedTest
-    @MethodSource("validateSizeGenerateData")
+    @MethodSource
     @DisplayName("중복 값이 있는지 확인 후 중복 값이 있으면 IllegalArgumentException 예외 발생")
     void validateSize(List<Integer> number) {
+        //given
+        //when
         List<Integer> numbers = new ArrayList<>(number);
+
+        //then
         assertThatThrownBy(() -> new BaseballNumbers(numbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    private static Stream<Arguments> validateSizeGenerateData() {
+    private static Stream<Arguments> validateSize() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1, 2, 2)),
                 Arguments.of(Arrays.asList(1, 2, 2, 3))
@@ -33,14 +32,18 @@ class BaseballNumbersTest {
     }
 
     @ParameterizedTest
-    @MethodSource("validateDuplicationGenerateData")
+    @MethodSource
     @DisplayName("3자리 숫자가 아니면 IllegalArgumentException 예외 발생")
     void validateDuplication(List<Integer> number) {
+        //given
+        //when
         List<Integer> numbers = new ArrayList<>(number);
+
+        //then
         assertThatThrownBy(() -> new BaseballNumbers(numbers)).isInstanceOf(IllegalArgumentException.class);
     }
 
-    private static Stream<Arguments> validateDuplicationGenerateData() {
+    private static Stream<Arguments> validateDuplication() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1)),
                 Arguments.of(Arrays.asList(1, 2)),
