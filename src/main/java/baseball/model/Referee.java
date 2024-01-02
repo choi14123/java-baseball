@@ -1,46 +1,42 @@
 package baseball.model;
 
 public class Referee {
-    private static int strike = 0;
-    private static int ball = 0;
+    private final int THREE_DIGIT_NUMBER = 3;
+    private int strikeCountNumber = 0;
+    private int ballCountNumber = 0;
 
-    public Referee(BaseballNumbers computer, BaseballNumbers user) {
+    public void compare(BaseballNumbers computer, BaseballNumbers user) {
         countBall(computer, user);
         countStrike(computer, user);
     }
 
-    public static int getBall() {
-        return ball;
+    public int getBall() {
+        return ballCountNumber;
     }
 
-    public static int getStrike() {
-        return strike;
+    public int getStrike() {
+        return strikeCountNumber;
     }
 
     private int countBall(BaseballNumbers computer, BaseballNumbers user) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+        for (int i = 0; i < THREE_DIGIT_NUMBER; i++) {
+            for (int j = 0; j < THREE_DIGIT_NUMBER; j++) {
                 if (computer.getNumbers().get(i).getNumber() == user.getNumbers().get(j).getNumber()) {
                     if (i != j) {
-                        ball++;
+                        ballCountNumber++;
                     }
                 }
             }
         }
-        return ball;
+        return ballCountNumber;
     }
 
     private int countStrike(BaseballNumbers computer, BaseballNumbers user) {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < THREE_DIGIT_NUMBER; i++) {
             if (computer.getNumbers().get(i).getNumber() == user.getNumbers().get(i).getNumber()) {
-                strike++;
+                strikeCountNumber++;
             }
         }
-        return strike;
-    }
-
-    public void resetBallStrikeCount() {
-        ball = 0;
-        strike = 0;
+        return strikeCountNumber;
     }
 }
