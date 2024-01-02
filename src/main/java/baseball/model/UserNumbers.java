@@ -2,30 +2,23 @@ package baseball.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class UserNumbers {
-    private final static int USER_NUMBER_SIZE = 3;
-    Scanner scanner = new Scanner(System.in);
-    private List<Integer> userInputNumbers = new ArrayList<>();
+    private final int USER_INPUT_NUMBERS_LENGTH = 3;
+    private List<Integer> userNumbersList = new ArrayList<>();
 
-    public BaseballNumbers inputUserNumbers() {
-        String[] strArr = scanner.next().split("");
+    public BaseballNumbers convertToBaseballNumber(String[] strArr) {
         validateSize(strArr);
-        for (int i = 0; i < USER_NUMBER_SIZE; i++) {
-            userInputNumbers.add(Integer.valueOf(strArr[i]));
+        for (int i = 0; i < USER_INPUT_NUMBERS_LENGTH; i++) {
+            userNumbersList.add(Integer.valueOf(strArr[i]));
         }
-        BaseballNumbers userNumbers = new BaseballNumbers(userInputNumbers);
+        BaseballNumbers userNumbers = new BaseballNumbers(userNumbersList);
         return userNumbers;
     }
 
-    private static void validateSize(String[] strArr) {
-        if (strArr.length != USER_NUMBER_SIZE) {
-            throw new IllegalArgumentException();
+    private void validateSize(String[] strArr) {
+        if (strArr.length != USER_INPUT_NUMBERS_LENGTH) {
+            throw new IllegalArgumentException("숫자 3자리를 입력해야 합니다.");
         }
-    }
-
-    public void deleteUserInputNumbers (){
-        userInputNumbers.clear();
     }
 }
