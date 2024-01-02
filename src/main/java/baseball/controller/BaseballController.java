@@ -1,37 +1,34 @@
 package baseball.controller;
 
-import baseball.model.BaseballNumbers;
 import baseball.model.RandomNumbers;
 import baseball.model.Referee;
 import baseball.model.UserNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.Scanner;
-
 public class BaseballController {
+    private final int THREE_STRIKE_CONDITION = 3;
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
-
     RandomNumbers randomNumbers = new RandomNumbers();
     UserNumbers userNumbers = new UserNumbers();
+    Referee referee = new Referee();
 
     public void start() {
-        int number = 0;
-        Scanner scanner = new Scanner(System.in);
+        boolean setGame = true;
+
         outputView.printStartGameMessage();
-        while (number != 2) {
-            BaseballNumbers baseballNumbers = new BaseballNumbers(randomNumbers.create());
-            inputView.printInputNumbersMessage();
-            Referee referee = new Referee(baseballNumbers, userNumbers.inputUserNumbers());
+        while (setGame) {
+            referee.compare(randomNumbers.set(randomNumbers.create()), userNumbers.convertToBaseballNumber(inputView.printInputNumbersMessage()));
             outputView.printRefereeMessage(referee.getBall(), referee.getStrike());
-            if (referee.getStrike() == 3) {
-                inputView.printInputGameRestartMessage(referee.getStrike());
-                number = scanner.nextInt();
-                randomNumbers.deleteComputerNumbers();
+            if (referee.getStrike() == THREE_STRIKE_CONDITION) {
+                inputView.printInputGameRestartMessage();
+                setGame = inputView.setGame();
+                randomNumbers = new RandomNumbers();
+                randomNumbers.create();
             }
-            userNumbers.deleteUserInputNumbers();
-            referee.resetBallStrikeCount();
+            userNumbers = new UserNumbers();
+            referee = new Referee();
         }
     }
 }
