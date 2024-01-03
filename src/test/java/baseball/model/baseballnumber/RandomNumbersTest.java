@@ -1,6 +1,6 @@
 package baseball.model.baseballnumber;
 
-import baseball.model.baseballnumber.RandomNumbers;
+
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,10 +11,11 @@ class RandomNumbersTest {
     @DisplayName("랜덤한 숫자 3개 생성한다.")
     void createRandomNumbersSize() {
         //given
-        RandomNumbers randomNumbers = new RandomNumbers();
+        RandomNumbersFactory randomNumbers = new RandomNumbersFactory();
 
         //when
-        int randomNumberSize = randomNumbers.set(randomNumbers.create()).getNumbers().size();
+        BaseballNumbers baseballNumbers = new BaseballNumbers(randomNumbers.create());
+        int randomNumberSize = baseballNumbers.getNumbers().size();
 
         //then
         Assertions.assertThat(randomNumberSize).isEqualTo(3);
