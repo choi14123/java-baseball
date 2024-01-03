@@ -19,12 +19,9 @@ class RefereeTest {
         BaseballNumbers userBaseballNumbers = new BaseballNumbers(userNumbers);
 
         Referee referee = new Referee();
-
         //when
-       referee.compare(computerBaseballNumbers, userBaseballNumbers);
-
         //then
-        Assertions.assertThat(referee.getBall()).isEqualTo(2);
-        Assertions.assertThat(referee.getStrike()).isEqualTo(1);
+        Assertions.assertThat(referee.countBall(computerBaseballNumbers, userBaseballNumbers)).isEqualTo(2);
+        Assertions.assertThat(referee.countStrike(computerBaseballNumbers, userBaseballNumbers)).isEqualTo(1);
     }
 }
