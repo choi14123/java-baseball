@@ -6,9 +6,10 @@ import java.util.stream.Collectors;
 
 
 public class BaseballNumbers {
-    private final int BASEBALL_NUMBER_SIZE = 3;
-    private static final String VALIDATE_DUPLICATION_EXCEPTION_MESSAGE = "중복된 숫자가 입력되었습니다.";
-    private static final String VALIDATE_NUMBER_LENGTH_EXCEPTION_MESSAGE = "중복된 숫자가 입력되었습니다.";
+    private static final String VALIDATE_NUMBER_LENGTH_EXCEPTION_MESSAGE = "3자리의 숫자를 입력해야합니다.";
+    private static final String VALIDATE_DUPLICATION_EXCEPTION_MESSAGE = "중복된 숫자가 입력 되었습니다";
+
+    private final int baseballNumberSize = 3;
     private List<BaseballNumber> numbers = new ArrayList<>();
 
     public BaseballNumbers(List<Integer> numbers) {
@@ -20,12 +21,18 @@ public class BaseballNumbers {
 
     public List<BaseballNumber> convertToBaseballNumber(List<Integer> numbers) {
         List<BaseballNumber> inputtedNumbers = new ArrayList<>();
-        for (int i = 0; i < BASEBALL_NUMBER_SIZE; i++) {
+        for (int i = 0; i < baseballNumberSize; i++) {
             int num = numbers.get(i);
             BaseballNumber baseballNumber = new BaseballNumber(num);
             inputtedNumbers.add(baseballNumber);
         }
         return inputtedNumbers;
+    }
+
+    private void validateLength(List<Integer> numbers) {
+        if (numbers.size() != baseballNumberSize) {
+            throw new IllegalArgumentException(VALIDATE_NUMBER_LENGTH_EXCEPTION_MESSAGE);
+        }
     }
 
     private void validateDuplication(List<Integer> numbers) {
@@ -34,12 +41,6 @@ public class BaseballNumbers {
                 .collect(Collectors.toList());
         if (numbers.size() != list.size()) {
             throw new IllegalArgumentException(VALIDATE_DUPLICATION_EXCEPTION_MESSAGE);
-        }
-    }
-
-    private void validateLength(List<Integer> numbers) {
-        if (numbers.size() != BASEBALL_NUMBER_SIZE) {
-            throw new IllegalArgumentException(VALIDATE_NUMBER_LENGTH_EXCEPTION_MESSAGE);
         }
     }
 
