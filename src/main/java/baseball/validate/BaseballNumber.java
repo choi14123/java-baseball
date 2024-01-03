@@ -1,4 +1,4 @@
-package baseball.model.validate;
+package baseball.validate;
 
 public class BaseballNumber {
     private static final int MIN_BASEBALL_NUMBER_SIZE = 1;
