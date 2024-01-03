@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.validate.BaseballNumbers;
+import baseball.model.baseballnumber.BaseballNumbers;
 
 public class Referee {
     private final int THREE_DIGIT_NUMBER = 3;

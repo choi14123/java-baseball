@@ -1,5 +1,6 @@
-package baseball.model;
+package baseball.model.baseballnumber;
 
+import baseball.model.baseballnumber.RandomNumbers;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

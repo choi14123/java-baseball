@@ -1,6 +1,6 @@
 package baseball.model;
 
-import baseball.validate.BaseballNumbers;
+import baseball.model.baseballnumber.BaseballNumbers;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
