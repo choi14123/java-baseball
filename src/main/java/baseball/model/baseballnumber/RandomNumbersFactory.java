@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class RandomNumbers {
+public class RandomNumbersFactory {
     private static final int COMPUTER_NUMBER_SIZE = 3;
     private static final int MAX_RANDOM_NUMBER_SIZE = 9;
+
     private List<Integer> computerNumber = new ArrayList<>();
     private Random random = new Random();
 
@@ -18,9 +19,5 @@ public class RandomNumbers {
             }
         }
         return computerNumber;
-    }
-
-    public BaseballNumbers set(List<Integer> numbers) {
-        return new BaseballNumbers(numbers);
     }
 }
