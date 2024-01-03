@@ -1,12 +1,14 @@
 package baseball.model;
 
+import baseball.model.validate.BaseballNumbers;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class RandomNumbers {
-    private final int COMPUTER_NUMBER_SIZE = 3;
-    private final int MAX_RANDOM_NUMBER_SIZE = 9;
+    private static final int COMPUTER_NUMBER_SIZE = 3;
+    private static final int MAX_RANDOM_NUMBER_SIZE = 9;
     private List<Integer> computerNumber = new ArrayList<>();
     private Random random = new Random();
 
