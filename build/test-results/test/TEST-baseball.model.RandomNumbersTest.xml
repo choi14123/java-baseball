@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="baseball.model.RandomNumbersTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-01-03T10:34:20" hostname="choechanghwan-ui-MacBookAir.local" time="0.111">
-  <properties/>
-  <testcase name="랜덤한 숫자 3개 생성한다." classname="baseball.model.RandomNumbersTest" time="0.111"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
