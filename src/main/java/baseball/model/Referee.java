@@ -1,5 +1,7 @@
 package baseball.model;
 
+import baseball.model.validate.BaseballNumbers;
+
 public class Referee {
     private final int THREE_DIGIT_NUMBER = 3;
     private int strikeCountNumber = 0;
