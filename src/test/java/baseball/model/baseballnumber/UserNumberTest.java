@@ -19,7 +19,7 @@ public class UserNumberTest {
 
         //when
         //then
-        Assertions.assertThat(userNumbers.convertToBaseballNumber(strArrUserNumber).getNumbers().size()).isEqualTo(3);
+        Assertions.assertThat(userNumbers.convertToBaseballNumber(strArrUserNumber).size()).isEqualTo(3);
     }
 
     @Test
@@ -33,6 +33,6 @@ public class UserNumberTest {
 
         //when
         //then
-        assertThatThrownBy(() -> userNumbers.convertToBaseballNumber(strArrUserNumber)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> userNumbers.convertToBaseballNumber(strArrUserNumber)).isInstanceOf(IllegalArgumentException.class).hasMessage("숫자 3자리를 입력해야 합니다.");
     }
 }
