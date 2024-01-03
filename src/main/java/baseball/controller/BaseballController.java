@@ -16,7 +16,6 @@ public class BaseballController {
 
     public void start() {
         boolean setGame = true;
-
         outputView.printStartGameMessage();
         while (setGame) {
             referee.compare(randomNumbers.set(randomNumbers.create()), userNumbers.convertToBaseballNumber(inputView.printInputNumbersMessage()));
