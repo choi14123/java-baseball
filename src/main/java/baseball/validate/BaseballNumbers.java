@@ -1,4 +1,4 @@
-package baseball.model.validate;
+package baseball.validate;
 
 import java.util.ArrayList;
 import java.util.List;
