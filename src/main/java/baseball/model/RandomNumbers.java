@@ -1,7 +1,6 @@
 package baseball.model;
 
-import baseball.model.validate.BaseballNumbers;
-
+import baseball.validate.BaseballNumbers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
