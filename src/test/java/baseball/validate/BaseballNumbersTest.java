@@ -1,4 +1,6 @@
-package baseball.model.validate;
+package baseball.validate;
+
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
