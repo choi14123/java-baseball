@@ -23,7 +23,7 @@ public class UserNumberTest {
 
     @Test
     @DisplayName("사용자가 입력한 숫자가 3자리가 아닐시 IllegalArgumentException 예외 발생.")
-    void validateLengthThrowNewException() {
+    void validateLengthThrowException() {
         //given
         UserNumbers userNumbers = new UserNumbers();
 
