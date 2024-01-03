@@ -1,8 +1,8 @@
 package baseball.controller;
 
-import baseball.model.RandomNumbers;
+import baseball.model.baseballnumber.RandomNumbers;
 import baseball.model.Referee;
-import baseball.model.UserNumbers;
+import baseball.model.baseballnumber.UserNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
