@@ -3,7 +3,6 @@ package baseball.model.baseballnumber;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 
 public class BaseballNumbers {
@@ -21,10 +20,10 @@ public class BaseballNumbers {
     }
 
     public List<BaseballNumber> convertToBaseballNumber(List<Integer> numbers) {
-        List<BaseballNumber> inputtedNumbers = IntStream.range(0, baseballNumberSize)
-                .mapToObj(i -> new BaseballNumber(numbers.get(i)))
+        List<BaseballNumber> convertToBaseballNumber = numbers.stream()
+                .map(number -> new BaseballNumber(number))
                 .collect(Collectors.toList());
-        return inputtedNumbers;
+        return convertToBaseballNumber;
     }
 
     private void validateLength(List<Integer> numbers) {
