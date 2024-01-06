@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
-class RandomNumbersTest {
+class RandomNumbersFactoryTest {
     @Test
     @DisplayName("랜덤한 숫자 3개 생성한다.")
     void createRandomNumbersSize() {
