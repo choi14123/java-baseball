@@ -7,10 +7,9 @@ import baseball.model.baseballnumber.UserNumbers;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import java.util.List;
-
 public class BaseballController {
     private static final int THREE_STRIKE_CONDITION = 3;
+
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
     private RandomNumbersFactory randomNumbers = new RandomNumbersFactory();
