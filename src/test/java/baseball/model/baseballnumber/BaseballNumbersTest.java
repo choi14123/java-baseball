@@ -1,8 +1,10 @@
 package baseball.model.baseballnumber;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,6 +15,18 @@ import java.util.stream.Stream;
 
 
 class BaseballNumbersTest {
+
+    @Test
+    @DisplayName("convertToBaseballNumber를 실행하면 3개의 숫자가 저장된다.")
+    void convertToBaseballNumber(){
+        //given
+        List<Integer> numbers = Arrays.asList(7,8,9);
+
+        //when
+        //then
+        assertThat(new BaseballNumbers(numbers).getNumbers().size()).isEqualTo(3);
+    }
+
     @ParameterizedTest
     @MethodSource
     @DisplayName("3자리 숫자가 아니면 IllegalArgumentException 예외 발생")
