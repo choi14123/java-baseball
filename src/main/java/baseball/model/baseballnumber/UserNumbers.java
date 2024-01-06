@@ -3,6 +3,7 @@ package baseball.model.baseballnumber;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class UserNumbers {
     private final int userInputNumbersLength = 3;
     private List<Integer> userNumbersList = new ArrayList<>();
