@@ -1,10 +1,8 @@
 package baseball.model.baseballnumber;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 public class RandomNumbersFactory {
     private static final int COMPUTER_NUMBER_SIZE = 3;
