@@ -44,4 +44,8 @@ public class BaseballNumbers {
     public List<BaseballNumber> getNumbers() {
         return numbers;
     }
+
+    public int getBaseballNumberValue(int index) {
+        return numbers.get(index).getNumber();
+    }
 }
