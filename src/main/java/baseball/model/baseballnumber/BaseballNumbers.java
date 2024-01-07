@@ -19,7 +19,7 @@ public class BaseballNumbers {
         this.numbers = inputtedNumbers;
     }
 
-    public List<BaseballNumber> convertToBaseballNumber(List<Integer> numbers) {
+    private List<BaseballNumber> convertToBaseballNumber(List<Integer> numbers) {
         List<BaseballNumber> convertToBaseballNumber = numbers.stream()
                 .map(number -> new BaseballNumber(number))
                 .collect(Collectors.toList());
