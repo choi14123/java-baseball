@@ -10,7 +10,7 @@ import java.util.List;
 class RefereeTest {
     @Test
     @DisplayName("컴퓨터와 사용자의 숫자를 비교하여 볼 갯수 반환한다.")
-    void countBall() {
+    void ballCountTest() {
         //given
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> userNumbers = Arrays.asList(1, 3, 2);
@@ -26,7 +26,7 @@ class RefereeTest {
 
     @Test
     @DisplayName("컴퓨터와 사용자의 숫자를 비교하여 스트라이크 갯수 반환한다.")
-    void countStrike() {
+    void strikeCountTest() {
         //given
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> userNumbers = Arrays.asList(1, 3, 2);

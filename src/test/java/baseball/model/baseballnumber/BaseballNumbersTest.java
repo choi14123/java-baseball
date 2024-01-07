@@ -18,7 +18,7 @@ class BaseballNumbersTest {
 
     @Test
     @DisplayName("convertToBaseballNumber를 실행하면 3개의 숫자가 저장된다.")
-    void convertToBaseballNumber(){
+    void convertToBaseballNumberTest(){
         //given
         List<Integer> numbers = Arrays.asList(7,8,9);
 
@@ -30,7 +30,7 @@ class BaseballNumbersTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("3자리 숫자가 아니면 IllegalArgumentException 예외 발생")
-    void validateSize(List<Integer> number) {
+    void validateSizeTest(List<Integer> number) {
         //given
         //when
         List<Integer> numbers = new ArrayList<>(number);
@@ -39,7 +39,7 @@ class BaseballNumbersTest {
         assertThatThrownBy(() -> new BaseballNumbers(numbers)).isInstanceOf(IllegalArgumentException.class).hasMessage("3자리의 숫자를 입력해야합니다.");
     }
 
-    private static Stream<Arguments> validateSize() {
+    private static Stream<Arguments> validateSizeTest() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1, 2)),
                 Arguments.of(Arrays.asList(1, 2, 3, 4))
@@ -49,7 +49,7 @@ class BaseballNumbersTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("중복 값이 있는지 확인 후 중복 값이 있으면 IllegalArgumentException 예외 발생")
-    void validateDuplication(List<Integer> number) {
+    void validateDuplicationTest(List<Integer> number) {
         //given
         //when
         List<Integer> numbers = new ArrayList<>(number);
@@ -58,7 +58,7 @@ class BaseballNumbersTest {
         assertThatThrownBy(() -> new BaseballNumbers(numbers)).isInstanceOf(IllegalArgumentException.class).hasMessage("중복된 숫자가 입력 되었습니다");
     }
 
-    private static Stream<Arguments> validateDuplication() {
+    private static Stream<Arguments> validateDuplicationTest() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1, 1, 1)),
                 Arguments.of(Arrays.asList(1, 1, 2)),

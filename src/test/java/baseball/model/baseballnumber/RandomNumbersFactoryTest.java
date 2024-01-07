@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class RandomNumbersFactoryTest {
     @Test
     @DisplayName("랜덤한 숫자 3개 생성한다.")
-    void createRandomNumbersSize() {
+    void createRandomNumbersSizeTest() {
         //given
         RandomNumbersFactory randomNumbers = new RandomNumbersFactory();
 
