@@ -12,19 +12,19 @@ public class Referee {
     private static final int START = 0;
     private static final int NUMBER_LENGTH = 3;
 
-    public int countStrike(BaseballNumbers computer, BaseballNumbers user) {
+    public int countStrike(BaseballNumbers computers, BaseballNumbers users) {
         return (int) IntStream.range(START, NUMBER_LENGTH)
-                .filter(num -> computer.getNumbers().get(num).getNumber() == user.getNumbers().get(num).getNumber())
+                .filter(index -> computers.getBaseballNumberValue(index) == users.getBaseballNumberValue(index))
                 .count();
     }
 
-    public int countBall(BaseballNumbers computer, BaseballNumbers user) {
-        List<Integer> computerList = Arrays.asList(computer.getNumbers().get(0).getNumber(), computer.getNumbers().get(1).getNumber(), computer.getNumbers().get(2).getNumber());
-        List<Integer> userList = Arrays.asList(user.getNumbers().get(0).getNumber(), user.getNumbers().get(1).getNumber(), user.getNumbers().get(2).getNumber());
+    public int countBall(BaseballNumbers computers, BaseballNumbers users) {
+        List<Integer> computerList = Arrays.asList(computers.getBaseballNumberValue(0), computers.getBaseballNumberValue(1), computers.getBaseballNumberValue(2));
+        List<Integer> uesrList = Arrays.asList(users.getBaseballNumberValue(0), users.getBaseballNumberValue(1), users.getBaseballNumberValue(2));
 
         return (int) (computerList.stream()
-                .filter(com -> userList.stream().anyMatch(Predicate.isEqual(com)))
+                .filter(randomNumber -> uesrList.stream().anyMatch(Predicate.isEqual(randomNumber)))
                 .count()
-                - countStrike(user, computer));
+                - countStrike(users, computers));
     }
 }
