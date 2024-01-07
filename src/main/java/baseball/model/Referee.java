@@ -9,7 +9,6 @@ import java.util.stream.IntStream;
 
 
 public class Referee {
-
     private static final int START = 0;
     private static final int NUMBER_LENGTH = 3;
 
