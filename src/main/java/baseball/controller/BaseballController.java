@@ -19,12 +19,12 @@ public class BaseballController {
         outputView.printStartGameMessage();
         while (isPlaying) {
             BaseballNumbers computerNumbersList = new BaseballNumbers(randomNumbers.create());
-            BaseballNumbers userNumbersList = new BaseballNumbers(inputView.printInputNumbersMessage());
-            int countBall = referee.countBall(computerNumbersList, userNumbersList);
-            int countStrike = referee.countStrike(computerNumbersList, userNumbersList);
-            printResult(countBall, countStrike);
-            if (countStrike == THREE_STRIKE_CONDITION) {
-                inputView.printInputGameRestartMessage();
+            BaseballNumbers userNumbersList = new BaseballNumbers(inputView.printNumbersMessage());
+            int ballCount = referee.ballCount(computerNumbersList, userNumbersList);
+            int strikeCount = referee.strikeCount(computerNumbersList, userNumbersList);
+            printResult(ballCount, strikeCount);
+            if (strikeCount == THREE_STRIKE_CONDITION) {
+                outputView.printInputGameRestartMessage();
                 isPlaying = inputView.isPlaying();
                 randomNumbers = new RandomNumbersFactory();
                 randomNumbers.create();
