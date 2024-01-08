@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class BaseballNumbers {
     private static final String VALIDATE_NUMBER_LENGTH_EXCEPTION_MESSAGE = "3자리의 숫자를 입력해야합니다.";
     private static final String VALIDATE_DUPLICATION_EXCEPTION_MESSAGE = "중복된 숫자가 입력 되었습니다";

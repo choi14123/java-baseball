@@ -1,11 +1,11 @@
 package baseball.model;
 
 import baseball.model.baseballnumber.BaseballNumbers;
+import java.util.Arrays;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.Arrays;
-import java.util.List;
 
 class RefereeTest {
     @Test
