@@ -1,5 +1,7 @@
 package baseball.model.baseballnumber;
 
+import java.util.Objects;
+
 public class BaseballNumber {
     private static final int MIN_BASEBALL_NUMBER_SIZE = 1;
     private static final int MAX_BASEBALL_NUMBER_SIZE = 9;
@@ -20,5 +22,22 @@ public class BaseballNumber {
 
     public int getNumber() {
         return number;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BaseballNumber that = (BaseballNumber) o;
+        return number == that.number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(number);
     }
 }
