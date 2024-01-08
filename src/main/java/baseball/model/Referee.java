@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.model.baseballnumber.BaseballNumber;
 import baseball.model.baseballnumber.BaseballNumbers;
 import java.util.stream.IntStream;
 
@@ -14,18 +15,16 @@ public class Referee {
     }
 
     public int ballCount(BaseballNumbers computers, BaseballNumbers users) {
-        int ballCountNumber = 0;
-        for (int i = 0; i < 3; i++) {
-            if (computers.getBaseballNumberValue(0) == users.getBaseballNumberValue(i)) {
-                ballCountNumber++;
-            }
-            if (computers.getBaseballNumberValue(1) == users.getBaseballNumberValue(i)) {
-                ballCountNumber++;
-            }
-            if (computers.getBaseballNumberValue(2) == users.getBaseballNumberValue(i)) {
-                ballCountNumber++;
-            }
-        }
-        return ballCountNumber - strikeCount(computers, users);
+        int count = (int) computers.getNumbers()
+                .stream()
+                .filter(computerNumber -> compare(computerNumber, users))
+                .count();
+        return count - strikeCount(computers, users);
+    }
+
+    private boolean compare(BaseballNumber computerNumber, BaseballNumbers userNumbers) {
+        return userNumbers.
+                getNumbers().
+                contains(computerNumber);
     }
 }
