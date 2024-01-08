@@ -1,9 +1,6 @@
 package baseball.model;
 
 import baseball.model.baseballnumber.BaseballNumbers;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 public class Referee {
@@ -17,14 +14,18 @@ public class Referee {
     }
 
     public int ballCount(BaseballNumbers computers, BaseballNumbers users) {
-        List<Integer> computerList = Arrays.asList(computers.getBaseballNumberValue(0),
-                computers.getBaseballNumberValue(1), computers.getBaseballNumberValue(2));
-        List<Integer> uesrList = Arrays.asList(users.getBaseballNumberValue(0), users.getBaseballNumberValue(1),
-                users.getBaseballNumberValue(2));
-
-        return (int) (computerList.stream()
-                .filter(randomNumber -> uesrList.stream().anyMatch(Predicate.isEqual(randomNumber)))
-                .count()
-                - strikeCount(users, computers));
+        int ballCountNumber = 0;
+        for (int i = 0; i < 3; i++) {
+            if (computers.getBaseballNumberValue(0) == users.getBaseballNumberValue(i)) {
+                ballCountNumber++;
+            }
+            if (computers.getBaseballNumberValue(1) == users.getBaseballNumberValue(i)) {
+                ballCountNumber++;
+            }
+            if (computers.getBaseballNumberValue(2) == users.getBaseballNumberValue(i)) {
+                ballCountNumber++;
+            }
+        }
+        return ballCountNumber - strikeCount(computers, users);
     }
 }
