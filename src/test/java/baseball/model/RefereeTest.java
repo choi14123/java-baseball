@@ -19,6 +19,7 @@ class RefereeTest {
         BaseballNumbers userBaseballNumbers = new BaseballNumbers(userNumbers);
 
         Referee referee = new Referee();
+
         //when
         //then
         Assertions.assertThat(referee.ballCount(computerBaseballNumbers, userBaseballNumbers)).isEqualTo(2);
@@ -35,6 +36,7 @@ class RefereeTest {
         BaseballNumbers userBaseballNumbers = new BaseballNumbers(userNumbers);
 
         Referee referee = new Referee();
+
         //when
         //then
         Assertions.assertThat(referee.strikeCount(computerBaseballNumbers, userBaseballNumbers)).isEqualTo(1);

@@ -26,6 +26,14 @@ class BaseballNumbersTest {
         assertThat(new BaseballNumbers(numbers).getNumbers().size()).isEqualTo(3);
     }
 
+    private static Stream<Arguments> validateSizeTest() {
+        return Stream.of(
+                Arguments.of(Arrays.asList(1)),
+                Arguments.of(Arrays.asList(1, 2)),
+                Arguments.of(Arrays.asList(1, 2, 3, 4))
+        );
+    }
+
     @ParameterizedTest
     @MethodSource
     @DisplayName("3자리 숫자가 아니면 IllegalArgumentException 예외 발생")
@@ -35,15 +43,10 @@ class BaseballNumbersTest {
         List<Integer> numbers = new ArrayList<>(number);
 
         //then
-        assertThatThrownBy(() -> new BaseballNumbers(numbers)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(
+                () -> new BaseballNumbers(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("3자리의 숫자를 입력해야합니다.");
-    }
-
-    private static Stream<Arguments> validateSizeTest() {
-        return Stream.of(
-                Arguments.of(Arrays.asList(1, 2)),
-                Arguments.of(Arrays.asList(1, 2, 3, 4))
-        );
     }
 
     @ParameterizedTest
@@ -55,7 +58,9 @@ class BaseballNumbersTest {
         List<Integer> numbers = new ArrayList<>(number);
 
         //then
-        assertThatThrownBy(() -> new BaseballNumbers(numbers)).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(
+                () -> new BaseballNumbers(numbers))
+                .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("중복된 숫자가 입력 되었습니다");
     }
 
