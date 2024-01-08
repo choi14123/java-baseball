@@ -12,13 +12,13 @@ public class BaseballNumber {
         this.number = number;
     }
 
-    public int getNumber() {
-        return number;
-    }
-
     private void validateNumber(int number) {
         if (number < MIN_BASEBALL_NUMBER_SIZE || MAX_BASEBALL_NUMBER_SIZE < number) {
             throw new IllegalArgumentException(VALIDATE_NUMBER_SIZE_EXCEPTION_MESSAGE);
         }
+    }
+
+    public int getNumber() {
+        return number;
     }
 }
