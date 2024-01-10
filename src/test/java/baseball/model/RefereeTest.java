@@ -13,13 +13,10 @@ class RefereeTest {
         //given
         List<Integer> computerNumbers = List.of(1, 2, 3);
         List<Integer> userNumbers = List.of(1, 3, 2);
-
         //when
         BaseballNumbers computerBaseballNumbers = new BaseballNumbers(computerNumbers);
         BaseballNumbers userBaseballNumbers = new BaseballNumbers(userNumbers);
-
         Referee referee = new Referee();
-
         //then
         Assertions.assertThat(referee.ballCount(computerBaseballNumbers, userBaseballNumbers)).isEqualTo(2);
     }
@@ -30,13 +27,10 @@ class RefereeTest {
         //given
         List<Integer> computerNumbers = List.of(1, 2, 3);
         List<Integer> userNumbers = List.of(1, 3, 2);
-
         //when
         BaseballNumbers computerBaseballNumbers = new BaseballNumbers(computerNumbers);
         BaseballNumbers userBaseballNumbers = new BaseballNumbers(userNumbers);
-
         Referee referee = new Referee();
-
         //then
         Assertions.assertThat(referee.strikeCount(computerBaseballNumbers, userBaseballNumbers)).isEqualTo(1);
     }
