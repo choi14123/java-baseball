@@ -13,7 +13,7 @@ public class BaseballNumbers {
 
     public BaseballNumbers(List<Integer> numbers) {
         validateLength(numbers);
-        validateDuplication(numbers);
+        validateDuplicationValue(numbers);
         List<BaseballNumber> inputtedNumbers = convertToBaseballNumber(numbers);
         this.numbers = inputtedNumbers;
     }
@@ -31,7 +31,7 @@ public class BaseballNumbers {
         }
     }
 
-    private void validateDuplication(List<Integer> numbers) {
+    private void validateDuplicationValue(List<Integer> numbers) {
         List<Integer> list = numbers.stream()
                 .distinct()
                 .collect(Collectors.toList());
