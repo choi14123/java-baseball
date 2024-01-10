@@ -1,6 +1,5 @@
 package baseball.view;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class InputView {
     private static final String PRINT_INPUT_NUMBERS_MESSAGE = "숫자를 입력해주세요 : ";
-
+    private static final int STOP_NUMBER = 1;
     Scanner scanner = new Scanner(System.in);
 
     public List<Integer> printNumbersMessage() {
@@ -19,7 +18,7 @@ public class InputView {
 
     public boolean isPlaying() {
         int number = scanner.nextInt();
-        if (number != 1){
+        if (number != STOP_NUMBER) {
             return false;
         }
         return true;
