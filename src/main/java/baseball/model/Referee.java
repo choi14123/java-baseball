@@ -15,11 +15,11 @@ public class Referee {
     }
 
     public int ballCount(BaseballNumbers computers, BaseballNumbers users) {
-        int count = (int) computers.getNumbers()
+        int ballCount = (int) computers.getNumbers()
                 .stream()
                 .filter(computerNumber -> compare(computerNumber, users))
                 .count();
-        return count - strikeCount(computers, users);
+        return ballCount - strikeCount(computers, users);
     }
 
     private boolean compare(BaseballNumber computerNumber, BaseballNumbers userNumbers) {
