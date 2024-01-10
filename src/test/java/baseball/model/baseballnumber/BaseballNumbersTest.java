@@ -52,7 +52,7 @@ class BaseballNumbersTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("중복 값이 있는지 확인 후 중복 값이 있으면 IllegalArgumentException 예외 발생")
-    void validateDuplicationTest(List<Integer> number) {
+    void validateDuplicationValueTest(List<Integer> number) {
         //given
         //when
         List<Integer> numbers = new ArrayList<>(number);
@@ -64,7 +64,7 @@ class BaseballNumbersTest {
                 .hasMessage("중복된 숫자가 입력 되었습니다");
     }
 
-    private static Stream<Arguments> validateDuplicationTest() {
+    private static Stream<Arguments> validateDuplicationValueTest() {
         return Stream.of(
                 Arguments.of(Arrays.asList(1, 1, 1)),
                 Arguments.of(Arrays.asList(1, 1, 2)),
