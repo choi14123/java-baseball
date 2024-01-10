@@ -1,11 +1,11 @@
 package baseball.model;
 
 import baseball.model.baseballnumber.BaseballNumbers;
+import java.util.Arrays;
+import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import java.util.Arrays;
-import java.util.List;
 
 class RefereeTest {
     @Test
@@ -15,13 +15,13 @@ class RefereeTest {
         List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
         List<Integer> userNumbers = Arrays.asList(1, 3, 2);
 
+        //when
         BaseballNumbers computerBaseballNumbers = new BaseballNumbers(computerNumbers);
         BaseballNumbers userBaseballNumbers = new BaseballNumbers(userNumbers);
 
         Referee referee = new Referee();
 
-        //when
-       referee.compare(computerBaseballNumbers, userBaseballNumbers);
+        referee.compare(computerBaseballNumbers, userBaseballNumbers);
 
         //then
         Assertions.assertThat(referee.getBall()).isEqualTo(2);
