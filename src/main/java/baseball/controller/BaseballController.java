@@ -35,18 +35,18 @@ public class BaseballController {
     }
 
     private void printResult(int countBall, int countStrike) {
-        isNothing(countBall, countStrike);
-        hasBallOrStrike(countBall, countStrike);
-        isThreeStrike(countStrike);
+        ballAndStrikeNothing(countBall, countStrike);
+        ballOrStrike(countBall, countStrike);
+        threeStrike(countStrike);
     }
 
-    private void isNothing(int ballCount, int strikeCount) {
+    private void ballAndStrikeNothing(int ballCount, int strikeCount) {
         if (ballCount == 0 && strikeCount == 0) {
             outputView.printNothing();
         }
     }
 
-    private void hasBallOrStrike(int ballCount, int strikeCount) {
+    private void ballOrStrike(int ballCount, int strikeCount) {
         if (ballCount > 0 && strikeCount == 0) {
             outputView.printBall(ballCount);
         }
@@ -58,8 +58,8 @@ public class BaseballController {
         }
     }
 
-    private void isThreeStrike(int strikeCount) {
-        if (strikeCount == 3) {
+    private void threeStrike(int strikeCount) {
+        if (strikeCount == THREE_STRIKE_CONDITION) {
             outputView.printThreeStrike();
         }
     }
