@@ -13,7 +13,9 @@ public class InputView {
     public List<Integer> printNumbersMessage() {
         System.out.print(PRINT_INPUT_NUMBERS_MESSAGE);
         String[] strArrUserNumbers = scanner.next().split("");
-        return Arrays.stream(strArrUserNumbers).map(value -> Integer.parseInt(value)).collect(Collectors.toList());
+        return Arrays.stream(strArrUserNumbers)
+                .map(value -> Integer.parseInt(value))
+                .collect(Collectors.toList());
     }
 
     public boolean isPlaying() {
