@@ -6,16 +6,15 @@ import org.junit.jupiter.api.Test;
 
 class RandomNumbersFactoryTest {
     @Test
-    @DisplayName("랜덤한 숫자 3개 생성한다.")
+    @DisplayName("랜덤한 숫자를 생성했을 떼, 숫자가 3개인지 확인한다.")
     void createRandomNumbersSizeTest() {
         //given
         RandomNumbersFactory randomNumbers = new RandomNumbersFactory();
 
         //when
         BaseballNumbers baseballNumbers = new BaseballNumbers(randomNumbers.create());
-        int randomNumberSize = baseballNumbers.getNumbers().size();
 
         //then
-        Assertions.assertThat(randomNumberSize).isEqualTo(3);
+        Assertions.assertThat(baseballNumbers.getNumbers().size()).isEqualTo(3);
     }
 }
