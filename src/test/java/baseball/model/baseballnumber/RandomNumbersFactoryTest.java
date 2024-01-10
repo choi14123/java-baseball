@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 class RandomNumbersFactoryTest {
     @Test
-    @DisplayName("랜덤한 숫자를 생성했을 떼, 숫자가 3개인지 확인한다.")
+    @DisplayName("랜덤한 숫자를 생성했을 때, 숫자가 3개인지 확인한다.")
     void createRandomNumbersSizeTest() {
         //given
         RandomNumbersFactory randomNumbers = new RandomNumbersFactory();
