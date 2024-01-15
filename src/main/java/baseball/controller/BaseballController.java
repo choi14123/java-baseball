@@ -8,6 +8,7 @@ import baseball.view.OutputView;
 
 public class BaseballController {
     private static final int THREE_STRIKE_CONDITION = 3;
+    private static final int STANDARD = 0;
 
     private InputView inputView = new InputView();
     private OutputView outputView = new OutputView();
@@ -41,19 +42,19 @@ public class BaseballController {
     }
 
     private void ballAndStrikeNothing(int ballCount, int strikeCount) {
-        if (ballCount == 0 && strikeCount == 0) {
+        if (ballCount == STANDARD && strikeCount == STANDARD) {
             outputView.printNothing();
         }
     }
 
     private void ballOrStrike(int ballCount, int strikeCount) {
-        if (ballCount > 0 && strikeCount == 0) {
+        if (ballCount > STANDARD && strikeCount == STANDARD) {
             outputView.printBall(ballCount);
         }
-        if (strikeCount > 0 && ballCount == 0) {
+        if (strikeCount > STANDARD && ballCount == STANDARD) {
             outputView.printStrike(strikeCount);
         }
-        if (ballCount > 0 && strikeCount > 0) {
+        if (ballCount > STANDARD && strikeCount > STANDARD) {
             outputView.printBallAndStrike(ballCount, strikeCount);
         }
     }
