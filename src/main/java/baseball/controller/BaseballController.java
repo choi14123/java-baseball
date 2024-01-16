@@ -10,10 +10,18 @@ public class BaseballController {
     private static final int THREE_STRIKE_CONDITION = 3;
     private static final int STANDARD = 0;
 
-    private InputView inputView = new InputView();
-    private OutputView outputView = new OutputView();
-    private RandomNumbersFactory randomNumbers = new RandomNumbersFactory();
-    private Referee referee = new Referee();
+    private final OutputView outputView;
+    private final InputView inputView;
+    private final Referee referee;
+
+    private RandomNumbersFactory randomNumbers;
+
+    public BaseballController() {
+        outputView = new OutputView();
+        randomNumbers = new RandomNumbersFactory();
+        inputView = new InputView();
+        referee = new Referee();
+    }
 
     public void start() {
         boolean isPlaying = true;
@@ -30,8 +38,6 @@ public class BaseballController {
                 randomNumbers = new RandomNumbersFactory();
                 randomNumbers.create();
             }
-            inputView = new InputView();
-            referee = new Referee();
         }
     }
 
