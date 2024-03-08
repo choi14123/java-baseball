@@ -1,44 +1,30 @@
 package baseball.model;
 
+import baseball.model.baseballnumber.BaseballNumber;
 import baseball.model.baseballnumber.BaseballNumbers;
+import java.util.stream.IntStream;
 
 public class Referee {
-    private final int THREE_DIGIT_NUMBER = 3;
-    private int strikeCountNumber = 0;
-    private int ballCountNumber = 0;
+    private static final int START = 0;
+    private static final int NUMBER_LENGTH = 3;
 
-    public void compare(BaseballNumbers computer, BaseballNumbers user) {
-        countBall(computer, user);
-        countStrike(computer, user);
+    public int strikeCount(BaseballNumbers computers, BaseballNumbers users) {
+        return (int) IntStream.range(START, NUMBER_LENGTH)
+                .filter(index -> computers.getBaseballNumberValue(index) == users.getBaseballNumberValue(index))
+                .count();
     }
 
-    public int getBall() {
-        return ballCountNumber;
+    public int ballCount(BaseballNumbers computers, BaseballNumbers users) {
+        int ballCount = (int) computers.getNumbers()
+                .stream()
+                .filter(computerNumber -> compare(computerNumber, users))
+                .count();
+        return ballCount - strikeCount(computers, users);
     }
 
-    public int getStrike() {
-        return strikeCountNumber;
-    }
-
-    private int countBall(BaseballNumbers computer, BaseballNumbers user) {
-        for (int i = 0; i < THREE_DIGIT_NUMBER; i++) {
-            for (int j = 0; j < THREE_DIGIT_NUMBER; j++) {
-                if (computer.getNumbers().get(i).getNumber() == user.getNumbers().get(j).getNumber()) {
-                    if (i != j) {
-                        ballCountNumber++;
-                    }
-                }
-            }
-        }
-        return ballCountNumber;
-    }
-
-    private int countStrike(BaseballNumbers computer, BaseballNumbers user) {
-        for (int i = 0; i < THREE_DIGIT_NUMBER; i++) {
-            if (computer.getNumbers().get(i).getNumber() == user.getNumbers().get(i).getNumber()) {
-                strikeCountNumber++;
-            }
-        }
-        return strikeCountNumber;
+    private boolean compare(BaseballNumber computerNumber, BaseballNumbers userNumbers) {
+        return userNumbers.
+                getNumbers().
+                contains(computerNumber);
     }
 }

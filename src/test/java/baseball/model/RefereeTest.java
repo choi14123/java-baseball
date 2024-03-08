@@ -1,7 +1,6 @@
 package baseball.model;
 
 import baseball.model.baseballnumber.BaseballNumbers;
-import java.util.Arrays;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -9,22 +8,30 @@ import org.junit.jupiter.api.Test;
 
 class RefereeTest {
     @Test
-    @DisplayName("컴퓨터와 사용자의 숫자를 비교하여 볼 갯수와 스트라이크 갯수를 반환한다.")
-    void twoBallOneStrike() {
+    @DisplayName("컴퓨터의 숫자와 사용자가 입력한 숫자를 비교하여 볼 갯수를 반환한다.")
+    void ballCountTest() {
         //given
-        List<Integer> computerNumbers = Arrays.asList(1, 2, 3);
-        List<Integer> userNumbers = Arrays.asList(1, 3, 2);
-
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        List<Integer> userNumbers = List.of(1, 3, 2);
         //when
         BaseballNumbers computerBaseballNumbers = new BaseballNumbers(computerNumbers);
         BaseballNumbers userBaseballNumbers = new BaseballNumbers(userNumbers);
-
         Referee referee = new Referee();
-
-        referee.compare(computerBaseballNumbers, userBaseballNumbers);
-
         //then
-        Assertions.assertThat(referee.getBall()).isEqualTo(2);
-        Assertions.assertThat(referee.getStrike()).isEqualTo(1);
+        Assertions.assertThat(referee.ballCount(computerBaseballNumbers, userBaseballNumbers)).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("컴퓨터의 숫자와 사용자가 입력한 숫자를 비교하여 스트라이크 갯수를 반환한다.")
+    void strikeCountTest() {
+        //given
+        List<Integer> computerNumbers = List.of(1, 2, 3);
+        List<Integer> userNumbers = List.of(1, 3, 2);
+        //when
+        BaseballNumbers computerBaseballNumbers = new BaseballNumbers(computerNumbers);
+        BaseballNumbers userBaseballNumbers = new BaseballNumbers(userNumbers);
+        Referee referee = new Referee();
+        //then
+        Assertions.assertThat(referee.strikeCount(computerBaseballNumbers, userBaseballNumbers)).isEqualTo(1);
     }
 }

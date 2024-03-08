@@ -1,34 +1,73 @@
 package baseball.controller;
 
-import baseball.model.baseballnumber.RandomNumbers;
 import baseball.model.Referee;
-import baseball.model.baseballnumber.UserNumbers;
+import baseball.model.baseballnumber.BaseballNumbers;
+import baseball.model.baseballnumber.RandomNumbersFactory;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class BaseballController {
-    private final int THREE_STRIKE_CONDITION = 3;
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
-    RandomNumbers randomNumbers = new RandomNumbers();
-    UserNumbers userNumbers = new UserNumbers();
-    Referee referee = new Referee();
+    private static final int THREE_STRIKE_CONDITION = 3;
+    private static final int STANDARD = 0;
+
+    private final OutputView outputView;
+    private final InputView inputView;
+    private final Referee referee;
+
+    private RandomNumbersFactory randomNumbers;
+
+    public BaseballController() {
+        outputView = new OutputView();
+        randomNumbers = new RandomNumbersFactory();
+        inputView = new InputView();
+        referee = new Referee();
+    }
 
     public void start() {
-        boolean setGame = true;
-
+        boolean isPlaying = true;
         outputView.printStartGameMessage();
-        while (setGame) {
-            referee.compare(randomNumbers.set(randomNumbers.create()), userNumbers.convertToBaseballNumber(inputView.printInputNumbersMessage()));
-            outputView.printRefereeMessage(referee.getBall(), referee.getStrike());
-            if (referee.getStrike() == THREE_STRIKE_CONDITION) {
-                inputView.printInputGameRestartMessage();
-                setGame = inputView.setGame();
-                randomNumbers = new RandomNumbers();
+        while (isPlaying) {
+            BaseballNumbers computerNumbersList = new BaseballNumbers(randomNumbers.create());
+            BaseballNumbers userNumbersList = new BaseballNumbers(inputView.printNumbersMessage());
+            int ballCountNumber = referee.ballCount(computerNumbersList, userNumbersList);
+            int strikeCountNumber = referee.strikeCount(computerNumbersList, userNumbersList);
+            printResult(ballCountNumber, strikeCountNumber);
+            if (strikeCountNumber == THREE_STRIKE_CONDITION) {
+                outputView.printInputGameRestartMessage();
+                isPlaying = inputView.isPlaying();
+                randomNumbers = new RandomNumbersFactory();
                 randomNumbers.create();
             }
-            userNumbers = new UserNumbers();
-            referee = new Referee();
+        }
+    }
+
+    private void printResult(int countBall, int countStrike) {
+        ballAndStrikeNothing(countBall, countStrike);
+        ballOrStrike(countBall, countStrike);
+        threeStrike(countStrike);
+    }
+
+    private void ballAndStrikeNothing(int ballCount, int strikeCount) {
+        if (ballCount == STANDARD && strikeCount == STANDARD) {
+            outputView.printNothing();
+        }
+    }
+
+    private void ballOrStrike(int ballCount, int strikeCount) {
+        if (ballCount > STANDARD && strikeCount == STANDARD) {
+            outputView.printBall(ballCount);
+        }
+        if (strikeCount > STANDARD && ballCount == STANDARD) {
+            outputView.printStrike(strikeCount);
+        }
+        if (ballCount > STANDARD && strikeCount > STANDARD) {
+            outputView.printBallAndStrike(ballCount, strikeCount);
+        }
+    }
+
+    private void threeStrike(int strikeCount) {
+        if (strikeCount == THREE_STRIKE_CONDITION) {
+            outputView.printThreeStrike();
         }
     }
 }
